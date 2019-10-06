@@ -1,0 +1,26 @@
+class Solution {
+    public int dominantIndex(int[] nums) {
+        int biggest = 0;
+        int secondBiggest = 0;
+        int index = -1;
+        //runs through each index
+        for(int i = 0; i < nums.length; i ++) {
+            //hold biggest value temporarily
+            int temp = biggest;
+            
+            //if current index is bigger than biggest number enter 
+            if (nums[i] > biggest) {
+                //set biggest number
+                biggest = nums[i];
+                secondBiggest = temp;
+                index = i;
+            }
+            //if current index is smaller than biggest and bigger than second biggest
+            if (nums[i] < biggest && nums[i] > secondBiggest) {
+                secondBiggest = nums[i];
+            }
+        }
+        if (secondBiggest * 2 <= biggest) return index;
+        else return -1;
+    }
+}

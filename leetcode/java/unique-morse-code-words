@@ -1,0 +1,23 @@
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        List<String> w = new ArrayList<String>();
+        String[] mor = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        int n;
+        String s;
+        
+        for (int i = 0; i < words.length; i++) {
+            n = 0;
+            s = "";
+            while (n < words[i].length()) {
+                s = s.concat(mor[alphabet.indexOf(words[i].charAt(n))]);
+                n++;
+            }
+            if (!w.contains(s))
+                w.add(s);
+            
+        }
+        
+        return w.size();
+    }
+}

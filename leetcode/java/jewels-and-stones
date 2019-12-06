@@ -1,0 +1,17 @@
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int out = 0;
+        int start;
+        //read through letters in J array
+        for (int i = 0; i < J.length(); i++) {
+            start = 0;
+            //get character
+            char c = J.charAt(i);
+            while(S.indexOf(c, start) != -1) {
+                out++;
+                start = S.indexOf(c, start)+1;
+            }
+        }
+        return out;
+    }
+}

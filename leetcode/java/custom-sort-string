@@ -1,0 +1,28 @@
+class Solution {
+    public String customSortString(String S, String T) {
+        
+        int moved = 0;
+        //go through every letter in S
+        for (int i = 0; i < S.length(); i++) {
+            int last = 0;
+            while (T.indexOf(S.charAt(i), last) != -1) {
+                last = T.indexOf(S.charAt(i), last)+1;
+                
+                String left = T.substring(0,moved);
+                
+                String rightL = T.charAt(last-1)+"";
+                
+                String middle = T.substring(moved,last-1);
+                
+                String end = T.substring(last, T.length());
+                
+                T = left + rightL + middle + end;
+                
+                moved++;
+            }
+        }
+        return T;
+    }
+}
+
+

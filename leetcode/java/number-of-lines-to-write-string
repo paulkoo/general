@@ -1,0 +1,20 @@
+class Solution {
+    public int[] numberOfLines(int[] widths, String S) {
+        int len = 0;
+        String str ="abcdefghijklmnopqrstuvwxyz";
+        int[] a = new int[2];
+        
+        for (int i = 0; i < S.length(); i++) {
+            int tempLen = widths[str.indexOf(S.charAt(i))];
+            if (len + tempLen <= 100) {
+                len += tempLen;
+            } else {
+                len = tempLen;
+                a[0]++;
+            }
+        }
+        a[1] = len;
+        a[0]++;
+        return a;
+    }
+}

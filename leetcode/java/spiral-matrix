@@ -1,0 +1,44 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        ArrayList<Integer> out = new ArrayList<>();
+        if (matrix.length < 1)
+            return out;
+        
+        int r = 0, c = 0, h = 1, v = 0;
+        int rMin = -1, rMax = matrix.length, cMin = -1, cMax = matrix[0].length;
+        int i = 0, total = matrix.length * matrix[0].length;
+        
+        while (i < total) {
+            // do it 9 times
+            out.add(matrix[r][c]);
+            System.out.println(out.get(i));
+            
+            if (h == 1 && c+h == cMax) {
+                h = 0;
+                v = 1;
+                rMin++;
+            }
+            if (v == 1 && r+v == rMax) {
+                h = -1;
+                v = 0;
+                cMax--;
+            }
+            if (h == -1 && c+h == cMin) {
+                h = 0;
+                v = -1;
+                rMax--;
+            }
+            if (v == -1 && r+v == rMin) {
+                h = 1;
+                v = 0;
+                cMin++;
+            }
+            r+=v;
+            c+=h;
+            i++;            
+        }
+        
+        
+        return out;
+    }
+}

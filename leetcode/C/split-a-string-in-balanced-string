@@ -1,0 +1,12 @@
+int balancedStringSplit(char * s){
+    int n = 0, re = 0;
+    for (int i = 0; i < strlen(s); i++) {
+        if (s[i] == 'R')
+            n++;
+        else if (s[i] == 'L')
+            n--;
+        if (n == 0)
+            re++;
+    }
+    return re;
+}

@@ -1,0 +1,29 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        String letters = "qwertyuiopasdfghjklzxcvbnm";
+        ArrayList<String> wds = new ArrayList<String>();
+        
+        for (int i = 0; i < words.length; i++) {
+            String w = words[i].toLowerCase();
+            int start = letters.indexOf(w.charAt(0));
+            boolean same = true;
+            
+            
+            for (int j = 1; j < w.length(); j++) {
+                if (start <= 9 && !(letters.indexOf(w.charAt(j)) <= 9))
+                    same = false;
+                if ((9 < start && start <= 18) && !(9 < letters.indexOf(w.charAt(j)) && letters.indexOf(w.charAt(j)) <= 18))
+                    same = false; 
+                if (18 < start && !(18 < letters.indexOf(w.charAt(j))))
+                    same = false;
+            }
+            
+            
+            if (same == true) {
+                wds.add(words[i]);
+            }
+        }
+        return wds.toArray(new String[0]);
+    }
+    
+}

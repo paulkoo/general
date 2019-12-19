@@ -1,0 +1,33 @@
+int* deckRevealedIncreasing(int* deck, int deckSize, int* returnSize){
+    *returnSize = deckSize;
+    int *newDeck = malloc(sizeof(int) * deckSize);
+
+    newDeck = deck;
+    bool swapped; 
+    for (int i = 0; i < deckSize-1; i++) { 
+        swapped = false; 
+        for (int j = 0; j < deckSize-i-1; j++) { 
+            if (newDeck[j] > newDeck[j+1]) { 
+                int temp = newDeck[j];
+                newDeck[j] = newDeck[j+1];
+                newDeck[j+1] = temp;
+                swapped = true; 
+            } 
+        }
+        if (swapped == false) 
+            break; 
+    } 
+    
+    
+    for (int i = deckSize-2; i > 0; i--) { 
+        int moved = newDeck[deckSize-1];
+        
+        for (int d = deckSize-2; d >= i; d--) {
+            newDeck[d+1] = newDeck[d];
+        }
+        newDeck[i] = moved;
+    } 
+    
+    
+    return newDeck;
+}

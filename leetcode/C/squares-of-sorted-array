@@ -1,0 +1,19 @@
+int* sortedSquares(int* A, int ASize, int* returnSize){
+    *returnSize = ASize;
+    int *a = malloc(sizeof(int) * ASize);
+    
+    int index = ASize-1;
+    int front = 0, back = ASize-1;
+    
+    while (index >= 0) {
+        if (pow(A[front],2) > pow(A[back],2)) {
+            a[index] = pow(A[front],2);
+            front++;
+        } else {
+            a[index] = pow(A[back],2);
+            back--;
+        }
+        index--;
+    }
+    return a;
+}

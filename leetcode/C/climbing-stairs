@@ -1,0 +1,27 @@
+double combinations(int ones, int twos) {
+    double re = 1;
+    int total = ones+twos;
+    for (int i = total; i > 1; i--) {
+        re *= total--;
+        if (ones > 1)
+            re /= ones--;
+        if (twos > 1) 
+            re /= twos--;
+    }
+    return re;
+}
+
+int climbStairs(int n) {
+    double c = 1;
+    int ones = n-2;
+    int twos = 1;
+    
+    for (int i = n-1; i >= (n+1)/2; i--) {
+        c+=combinations(ones,twos);
+        twos++;
+        ones-=2;
+    }
+    
+    int re = c+ .1;
+    return re;
+}

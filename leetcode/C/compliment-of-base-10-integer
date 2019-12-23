@@ -1,0 +1,15 @@
+int bitwiseComplement(int N){
+    if (N == 0) 
+        return 1;
+    int re = 0, i = 0;
+    
+    while (N > 0) {
+        printf("\n%d", N%2);
+        if (N%2 == 0)
+            re += (int)pow(2, i);
+        N /= 2;
+        i++;
+    }
+    
+    return re;
+}

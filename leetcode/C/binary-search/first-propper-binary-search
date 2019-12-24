@@ -1,0 +1,17 @@
+int search(int* nums, int numsSize, int target){
+    int left = 0;
+    int point;
+    int right = numsSize-1;
+    
+    while (left <= right) {
+        point = left + (right-left)/2;
+        if (nums[point] == target) 
+            return point;
+        if (target < nums[point])
+            right = point - 1;
+        else 
+            left = point + 1;
+    }
+    
+    return -1;
+}

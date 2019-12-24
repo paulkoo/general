@@ -1,0 +1,23 @@
+int search(int* nums, int numsSize, int target){
+    int index = -1;
+    int left = 0;
+    int point = numsSize/2;
+    int max = numsSize;
+    
+    
+    for (int i = 0; i < numsSize; i++) {
+        printf("\n%d", point);
+        if (nums[point] == target) {
+            return point;
+        } else if (nums[point] > target) {
+            right = point;
+            point = (left + point)/2;
+        } else {
+            left = point;
+            point = (right + point)/2;
+        }
+    }
+    
+    
+    return index;
+}

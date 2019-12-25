@@ -1,23 +1,27 @@
 int findMin(int* nums, int numsSize){
-    int left = 0, right = numsSize-1, pivot;
+    int left = 0, right = numsSize-1, pivot = (left+right)/2;
     
-    if (numsSize == 1)
+    //if array is 1 long
+    if (numsSize == 1)   
         return nums[0];
     
-    while (left < right) {
-        pivot = (left + right) / 2;
+    // if array is in order
+    if (nums[0] < nums[numsSize-1])
+        return nums[0];
+    
+    //other cases
+    while (left <= right) {
         
-        printf("\nleft = %d, pivot = %d, right = %d", left, pivot, right);
-        if (nums[left] <= nums[pivot] && nums[left] < nums[right]) { // left is the smallest
-            return nums[left];
-        } else if (nums[pivot] <= nums[right] && nums[pivot] <= nums[left]) { // pivot is the smallest
-            right = pivot;
-        } else {
-            if (right - left == 1)
-                return nums[right];
-            left = pivot;
-        }
+        if (nums[pivot] > nums[pivot+1])
+            return nums[pivot+1];
+        
+        if (nums[left] > nums[pivot])
+            right = pivot-1;
+        else
+            left = pivot+1;              
+        
+        pivot = (left + right)/2;
     }
     
-    return -1;
+    return nums[pivot+1];
 }

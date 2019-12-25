@@ -1,0 +1,30 @@
+int* constructRectangle(int area, int* returnSize){
+    int aSize = 2;
+    *returnSize = aSize;
+    int *points = malloc(sizeof(int) * aSize);
+
+    if (sqrt(area) - (int)sqrt(area) == 0) {
+        points[0] = (int)sqrt(area);
+        points[1] = (int)sqrt(area);
+    } else {
+        int wid = (int)sqrt(area);
+        int len = wid+1;
+        printf("len = %d, wid = %d", len, wid);
+        
+        while ( len*wid != area) {
+            if (len * wid < area)
+                len++;
+            else
+                wid--;
+        }
+        
+        points[0] = len;
+        points[1] = wid;
+        
+    }
+        
+    
+    
+    return points;
+}
+

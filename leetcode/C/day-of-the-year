@@ -1,0 +1,51 @@
+int dayOfYear(char * date){
+    int year = 100 * ((int)date[1]-48) + 10 * ((int)date[2]-48) + (int)date[3]-48;
+    int month = 10 * ((int)date[5]-48) + (int)date[6]-48;
+    int day = 10 * ((int)date[8]-48) + (int)date[9]-48;
+    
+    if((year % 4 == 0) && (month >= 3) && (year != 900)) {
+        printf("added %d", month);
+        day++;
+    }
+    
+    switch (month) {
+        case 1: 
+            month = 0;
+            break;
+        case 2: 
+            month = 31;
+            break;
+        case 3: 
+            month = 59;
+            break;
+        case 4: 
+            month = 90;
+            break;
+        case 5: 
+            month = 120;
+            break;
+        case 6: 
+            month = 151;
+            break;
+        case 7:
+            month = 181;
+            break;
+        case 8:
+            month = 212;
+            break;
+        case 9:
+            month = 243;
+            break;
+        case 10:
+            month = 273;
+            break;
+        case 11:
+            month = 304;
+            break;
+        case 12:
+            month = 334;
+            break;
+    }
+    
+    return month + day;
+}

@@ -1,0 +1,31 @@
+int sumFourDivisors(int* nums, int numsSize){ 
+    int sum = 0, i, f, n, factors, factsum;
+    
+    
+    for (i = 0; i < numsSize; i++) {
+        n = nums[i];
+        factors = 0;
+        factsum = 0;
+        for (f = 1; f*f <= n; f++) {
+            if (n % f == 0) {
+                if (n / f == f) {
+                    factsum += f;
+                    factors++;
+                } else {
+                    factsum += f + n/f;
+                    factors += 2;
+                }
+            }
+            
+            if (factors > 4)
+                break;
+            
+        }
+        if (factors == 4) {
+            sum += factsum;
+        }
+    }
+    
+    return sum;
+}
+
